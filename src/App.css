@@ -4,17 +4,23 @@
   color: black;
 }
 
-input{
+.headinginput{
 
   border: 0;
   outline: 0;
-  width: 90%;
+  width: 300px;
 }
-
+.notesinput{
+ margin: 5px;
+ border: 0;
+ outline: 0;
+}
 
 .heading {
 font-weight: 900;
 font-size: large;
+text-overflow: ellipsis;
+overflow: hidden;
 
 }
 button{
@@ -22,17 +28,31 @@ button{
   
 }
 
-.notes{
-  padding: 5px;
-  padding-top: 15px;
-  font-size: sm;
-  color: rgb(100, 100, 100);
+#root{
+  align-items: center;
 }
 
-.outline{
-  padding: 5px;
-  display: inline-block;
+.mainapp{
+  padding: 10px;
+  display:flex;
+  flex-wrap:wrap;
+  margin: auto;
 }
+
+.notes{
+  width:90%;
+  height: 80%;
+  padding: 5px;
+  padding-top: 15px;
+  font-size: large;
+  margin: auto;
+  color: rgb(100, 100, 100);
+  overflow-y:scroll;
+  scrollbar-width: none;
+  overflow-wrap: break-word;
+}
+
+
 
 .addbutton{
   background-color: white;
@@ -44,13 +64,29 @@ button{
   border: 0;
 
 }
-
+textarea{
+  resize: none;
+  font-size: large;
+  color: rgb(100, 100, 100);
+  margin: auto;
+}
 
 .boxy{
-  height: 250px;
-  width: 250px;
+  width:300px;
+  height: 300px;
+  margin-top: 0px;
+  margin: 10px;
+  padding: 5px;
+  display: inline-block;
   border: 10px solid white;
   border-radius: 10px;
   box-shadow: 0px 0px 10px  rgb(218, 218, 218);
+  
 }
 
+@media  (width < 750px) {
+  .mainapp{
+    justify-content: center;
+  }
+  
+}

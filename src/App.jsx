@@ -13,10 +13,10 @@ function App() {
 
       }
     return(
-      <>
+      <div className='mainapp'>
       <NoteAdder addNewNote={addNewNote}></NoteAdder>
       <Notegen noteArray = {noteArray}></Notegen>
-      </>
+      </div>
     )
 }
 
