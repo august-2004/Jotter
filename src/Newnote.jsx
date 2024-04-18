@@ -9,17 +9,20 @@ function NoteAdder({addNewNote}){
         setInputFields({...inputFields,para:event.target.value})
     }
     const handleSave = (event)=>{
-        if((inputFields.heading!='')&&(inputFields.para!='')&&(inputFields.para!='\n')){
+        if((inputFields.heading!='')&&(inputFields.para!='')){
         addNewNote(inputFields)
         setInputFields({heading:'',para:''});
         event.target.previousSibling.focus();
-        event.target.placeholder="Jot it Down"
-        
+        event.target.placeholder="Jot it Down";
+        }
+        else{
+            event.preventDefault();
         }
     }
     const nextField = (event) =>{
         if(event.key ==='Enter')
         {
+            event.preventDefault();
             event.target.nextSibling.focus();
         }
     }
@@ -28,16 +31,13 @@ function NoteAdder({addNewNote}){
     
         
             <div className="boxy">
+            <form onSubmit={(e)=> e.preventDefault() }>
                 <input  type="text" value={inputFields.heading} onChange={handleHeadingChange} onKeyDown={nextField} className="heading headinginput" placeholder="Give a heading"></input>
                 <textarea  type="text" value={inputFields.para} onFocus={(event)=>{
                     event.target.placeholder="";
-                    event.target.focus()}} onChange={handleNoteChange} onKeyDown={event => {
-                if (event.key === 'Enter') {
-                  handleSave(event);
-                  
-                }
-              }} className="notes notesinput" placeholder="Jot it Down"></textarea>
-                {/* <button className="addbutton" onClick={handleSave}>+</button> */}
+                    event.target.focus()}} onChange={handleNoteChange} className="notes notesinput" placeholder="Jot it Down"></textarea>
+                <button className="addbutton" type='submit'  onClick={handleSave}>&#10003; </button>
+                </form>
             </div>
         
     )
