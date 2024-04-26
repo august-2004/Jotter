@@ -13,7 +13,7 @@ function App() {
 
     const fetchData = ()=>
     {
-      fetch('http://localhost:3001/getnote',{
+      fetch('http://jotter-back-end.vercel.app/getnote',{
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
