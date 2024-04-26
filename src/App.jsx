@@ -18,7 +18,7 @@ function App() {
         headers: {
           "Content-Type": "application/json"
       },
-      body: JSON.stringify({"resquested" : "Notedatass"})
+      
       }).then(res => res.json()).then(res =>{setNotearray(res.reverse())})
     }
     const addNewNote = (noteObject) =>{
