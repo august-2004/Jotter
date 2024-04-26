@@ -65,9 +65,11 @@ button{
   outline: 0;
   border: 0;
   position: relative;
-  top: 165px;
+  top: 150px;
   left: 253px;
-  font-size: x-large;
+  font-size: large;
+  align-items: center;
+  
 }
 
 

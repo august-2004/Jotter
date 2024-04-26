@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Notegen from './Notegen'
 import NoteAdder from './Newnote';
@@ -6,15 +6,30 @@ import NoteAdder from './Newnote';
 function App() {
     const [noteArray,setNotearray] = useState([
       ]);
+    
+      useEffect(() => {
+        fetchData();
+     }, []);
 
-      const addNewNote = (noteObject) =>{
-          let updatedNoteArray = [noteObject,...noteArray];
-          setNotearray(updatedNoteArray);
-
+    const fetchData = ()=>
+    {
+      fetch('http://localhost:3001/getnote',{
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify({"resquested" : "Notedatass"})
+      }).then(res => res.json()).then(res =>{setNotearray(res.reverse())})
+    }
+    const addNewNote = (noteObject) =>{
+        let updatedNoteArray = [noteObject,...noteArray];
+        setNotearray(updatedNoteArray);
       }
+
+
     return(
       <div className='mainapp'>
-      <NoteAdder addNewNote={addNewNote}></NoteAdder>
+      <NoteAdder  fetchData = {fetchData}></NoteAdder>
       <Notegen noteArray = {noteArray}></Notegen>
       </div>
     )
