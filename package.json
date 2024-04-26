@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "proxy" : "http://jotter-back-end.vercel.app",
+  "proxy" : "https://jotter-back-end.vercel.app",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

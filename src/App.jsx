@@ -13,12 +13,8 @@ function App() {
 
     const fetchData = ()=>
     {
-      fetch('http://jotter-back-end.vercel.app/getnote',{
+      fetch('https://jotter-back-end.vercel.app/getnote',{
         method: 'GET',
-        headers: {
-          "Content-Type": "application/json"
-      },
-      
       }).then(res => res.json()).then(res =>{setNotearray(res.reverse())})
     }
     const addNewNote = (noteObject) =>{
