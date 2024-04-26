@@ -14,7 +14,7 @@ function App() {
     const fetchData = ()=>
     {
       fetch('http://jotter-back-end.vercel.app/getnote',{
-        method: 'POST',
+        method: 'GET',
         headers: {
           "Content-Type": "application/json"
       },
