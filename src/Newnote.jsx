@@ -6,7 +6,7 @@ function NoteAdder({fetchData}){
    
     
     const PostData = async (event) =>{
-        fetch('http://localhost:3001/postnote',{
+        fetch('https://jotter-back-end.vercel.app/postnote',{
             method: "POST", // "GET/POST"
             headers: {
                 "Content-Type": "application/json"
