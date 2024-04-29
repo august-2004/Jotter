@@ -3,7 +3,11 @@
   background-color: white;
   color: black;
 }
-
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .headinginput{
 
   border: 0;
@@ -39,6 +43,7 @@ button{
   display:inline-grid;
   align-items: center;
   grid-template-columns: repeat(3,1fr);
+ 
 }
 
 .notes{
@@ -93,12 +98,12 @@ textarea{
   
 }
 
-@media  (width < 1026px) {
+@media  (width < 1050px) {
   .mainapp{
     grid-template-columns: repeat(2,1fr);
   }}
 
-@media  (width < 1026px) {
+@media  (width < 730px) {
     .mainapp{
       grid-template-columns: repeat(1,1fr);
     }}
