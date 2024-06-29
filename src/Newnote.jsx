@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 function NoteAdder({fetchData}){
     const [inputFields,setInputFields] = useState({heading:'',para:''})
@@ -6,18 +6,21 @@ function NoteAdder({fetchData}){
    
     
     const PostData = async (event) =>{
-        fetch('https://jotter-back-end.vercel.app/postnote',{
-            method: "POST", // "GET/POST"
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(inputFields)
-        }).then(console.log(Response)).then(()=>{
+        let currentInput = inputFields
+        setInputFields({heading:'',para:''});
+        event.target.previousSibling.focus();
+        event.target.placeholder="Jot it Down";
+        fetch('https://jotter-back-end.vercel.app/postnote',
+            {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(currentInput)
+            })
+        .then(console.log(Response))
+        .then(()=>{
             fetchData();
-            setInputFields({heading:'',para:''});
-            event.target.previousSibling.focus();
-            event.target.placeholder="Jot it Down";})
-    }
+            })
+        }
 
     const handleHeadingChange = (event)=>{
         setInputFields({...inputFields,heading:event.target.value})

@@ -15,7 +15,14 @@ function App() {
     {
       fetch('https://jotter-back-end.vercel.app/getnote',{
         method: 'GET',
-      }).then(res => res.json()).then(res =>{setNotearray(res.reverse())})
+      })
+      .then(
+        res => res.json())
+        .then(
+          res =>{setNotearray(res.reverse()
+          )
+        }
+      )
     }
     const addNewNote = (noteObject) =>{
         let updatedNoteArray = [noteObject,...noteArray];
@@ -23,11 +30,14 @@ function App() {
       }
 
 
-    return(
+    return(<div className= "app">
+      <div className ="topbar"><p className="title">Jotter</p></div>
+      <div className ="notebox">
       <div className='mainapp'>
       <NoteAdder  fetchData = {fetchData}></NoteAdder>
       <Notegen noteArray = {noteArray}></Notegen>
       </div>
+      </div></div>
     )
 }
 
