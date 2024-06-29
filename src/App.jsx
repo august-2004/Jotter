@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Notegen from './Notegen'
 import NoteAdder from './Newnote';
+import Navbar from './Navbar';
+import Loginform from './Loginform';
 
 function App() {
     const [noteArray,setNotearray] = useState([
@@ -31,13 +33,14 @@ function App() {
 
 
     return(<div className= "app">
-      <div className ="topbar"><p className="title">Jotter</p></div>
+      <Navbar></Navbar>
       <div className ="notebox">
       <div className='mainapp'>
       <NoteAdder  fetchData = {fetchData}></NoteAdder>
-      <Notegen noteArray = {noteArray}></Notegen>
+      <Notegen noteArray = {noteArray}></Notegen></div>
+      <div id='overlay'><Loginform></Loginform></div>
       </div>
-      </div></div>
+    </div>
     )
 }
 
