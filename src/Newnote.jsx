@@ -53,7 +53,7 @@ function NoteAdder({fetchData}){
                 <textarea  type="text" value={inputFields.para} onFocus={(event)=>{
                     event.target.placeholder="";
                     event.target.focus()}} onChange={handleNoteChange} className="notes notesinput" placeholder="Jot it Down"></textarea>
-                <button className="addbutton" type='submit'  onClick={handleSave}>+</button>
+                <img src="plus.png" className="addbutton" type='submit'  onClick={handleSave}></img>
                 </form>
             
         

@@ -38,6 +38,8 @@ function App() {
       <div className='mainapp'>
       <NoteAdder  fetchData = {fetchData}></NoteAdder>
       <Notegen noteArray = {noteArray}></Notegen></div>
+      <img className='blue' src='blue.png'></img>
+      <img className='red' src='red.png'></img>
       <div id='overlay'><Loginform></Loginform></div>
       </div>
     </div>
