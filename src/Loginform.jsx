@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { validate } from "uuid";
 
-function Loginform(props){
+function Loginform({setUsername,setIsLoggedIn}){
 
-    const unblurDisplay = (event)=> {
-        var x = document.getElementById("overlay");
-        x.style.display = "none";
-    }
+    const [user, setUser] = useState({
+        "username" : '',
+        "password" : ''
+    })
+    const [errorMessage, setErrorMessage] = useState('');
+
 
     const handleUsernameChange = (event)=>{
         setUser({...user,username:event.target.value})
@@ -15,18 +16,45 @@ function Loginform(props){
         setUser({...user,password:event.target.value})
     }
 
-    const [user, setUser] = useState({
-        "username" : '',
-        "password" : ''
-    })
+    const handleSubmit = async (event) =>{
+        event.preventDefault();
+        try {
+            console.log(user)
+            const response = await fetch('jotter-back-end.vercel.app/login', {
+              method: 'POST',
+              credentials: 'include',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                username: user.username,
+                password: user.password,
+              }),
+            });
+            
+
+            const body1 = await response.json();
+            setUsername(body1.username);
+            setIsLoggedIn(body1.isLoggedIn);
+            
+      
+          } catch (error) {
+            console.error( error);
+            setErrorMessage('Login failed. Please check your credentials.');
+          }
+        };
+    
+
+    
 
 
     return(
-        <div id="loginform">
-            <img src="close.png" className="close" onClick={unblurDisplay}></img>
-            <input type="text" onChange={handleUsernameChange} value={user.username} />
-            <input type = "password"  onChange={handlePasswordChange} value ={user.password}/>
-        </div>
+        <form id="loginform" onSubmit={handleSubmit} method="post" >
+            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+            <input type="text" onChange={handleUsernameChange} value={user.username} required />
+            <input type = "password"  onChange={handlePasswordChange} value ={user.password} required />
+            <button type="submit" formMethod="post">Login</button>
+        </form>
     )
 }
 
