@@ -16,7 +16,7 @@ function App() {
 
     const fetchData = async ()=>
     {
-      const response = await fetch('jotter-back-end.vercel.app/',{
+      const response = await fetch('https://jotter-back-end.vercel.app/',{
         method: 'POST',
         credentials: 'include',
         body : {

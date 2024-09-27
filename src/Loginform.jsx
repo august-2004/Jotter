@@ -20,7 +20,7 @@ function Loginform({setUsername,setIsLoggedIn}){
         event.preventDefault();
         try {
             console.log(user)
-            const response = await fetch('jotter-back-end.vercel.app/login', {
+            const response = await fetch('https://jotter-back-end.vercel.app/login', {
               method: 'POST',
               credentials: 'include',
               headers: {
