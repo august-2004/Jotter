@@ -9,7 +9,7 @@ return(
 
   <>{props.noteArray.map ((oneNote) => {
   return (
-    <NoteElement  para={oneNote.para} heading ={oneNote.heading} key={uuidv4()} />
+    <NoteElement  para={oneNote.body} heading ={oneNote.heading} key={oneNote._id} />
   )})
   }
   </>

@@ -8,29 +8,29 @@ import Loginform from './Loginform';
 function App() {
     const [noteArray,setNotearray] = useState([]);
     const [username, setUsername] = useState("")
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-    
-      useEffect( () => {
-        fetchData();
-     }, []);
+    const [isLoggedIn, setIsLoggedIn] = useState(true)
 
-    const fetchData = async ()=>
-    {
-      const response = await fetch('https://jotter-back-end.vercel.app/',{
-        method: 'POST',
-        credentials: 'include',
-        body : {
-          username
-        }
-      })
+    useEffect(()=>{
+      checkLoginStatus();
+    },[])
+
+    const checkLoginStatus = async ()=>{
+      const response = await fetch("https://jotter-back-end.vercel.app/getnote",{
+        method : 'POST',
+        credentials: 'include'
+      });
+      
       if(response.ok){
         const body = await response.json();
-        console.log(body)
-        console.log("hey")
         setUsername(body.username);
-        setNotearray(body.noteArray);
-        console.log(isLoggedIn)
+        setNotearray(body.noteArray.reverse());
+        setIsLoggedIn(true);
       }
+      else{
+        setIsLoggedIn(false);
+      }
+
+
     }
 
    
@@ -40,12 +40,13 @@ function App() {
             {isLoggedIn ? (
                 <div className ="notebox">
                     <div className='mainapp'>
-                        {/* <Notegen noteArray = {noteArray}></Notegen> */}
+                        <NoteAdder setNotearray={setNotearray}></NoteAdder>
+                        <Notegen noteArray = {noteArray}></Notegen>
                     </div>
                 </div>
                  )
           :          
-            (<div><Loginform setUsername={setUsername} setIsLoggedIn={setIsLoggedIn}></Loginform></div>)
+            (<div><Loginform setUsername={setUsername} setIsLoggedIn={setIsLoggedIn} setNotearray={setNotearray}></Loginform></div>)
     }
           </div>
         

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Loginform({setUsername,setIsLoggedIn}){
+function Loginform({setUsername,setIsLoggedIn, setNotearray}){
 
     const [user, setUser] = useState({
         "username" : '',
@@ -33,9 +33,11 @@ function Loginform({setUsername,setIsLoggedIn}){
             });
             
 
-            const body1 = await response.json();
-            setUsername(body1.username);
-            setIsLoggedIn(body1.isLoggedIn);
+            const body = await response.json();
+            setUsername(body.username);
+            setNotearray(body.noteArray)
+            setIsLoggedIn(body.isLoggedIn);
+
             
       
           } catch (error) {
