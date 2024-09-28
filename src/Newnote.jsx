@@ -7,31 +7,35 @@ function NoteAdder({setNotearray}){
     
     const PostData = async (event) =>{
         let currentInput = inputFields
-        console.log(currentInput.para)
         setInputFields({heading:'',para:''});
         event.target.previousSibling.focus();
         event.target.placeholder="Jot it Down";
+        console.log(currentInput);
+
         try{
         const response = await fetch('https://jotter-back-end.vercel.app/postnote',
-            {
-            method: "POST",
-            credentials: 'include',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                heading : currentInput.heading,
-                body: currentInput.para
-                })
-            })
+                {
+                    method: "POST",
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        heading : currentInput.heading,
+                        body: currentInput.para
+                        })
+                }
+            )
             if (response.ok) {
                 const body = await response.json(); 
                 setNotearray(body.noteArray.reverse()); 
                 console.log(body.noteArray);
-        }
-    }
-            catch(error){
-                console.log(error);
             }
         }
+        catch(error){
+                console.log(error);
+        }
+    }
 
     const handleHeadingChange = (event)=>{
         setInputFields({...inputFields,heading:event.target.value})
