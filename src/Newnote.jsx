@@ -13,7 +13,7 @@ function NoteAdder({setNotearray}){
         console.log(currentInput);
 
         try{
-        const response = await fetch('https://jotter-back-end.vercel.app/postnote',
+        const response = await fetch('https://jotter-backend.netlify.app/postnote',
                 {
                     method: "POST",
                     credentials: 'include',

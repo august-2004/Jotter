@@ -15,7 +15,7 @@ function App() {
     },[])
 
     const checkLoginStatus = async ()=>{
-      const response = await fetch("https://jotter-back-end.vercel.app/getnote",{
+      const response = await fetch("https://jotter-backend.netlify.app/getnote",{
         method : 'POST',
         credentials: 'include'
       });

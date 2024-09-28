@@ -20,7 +20,7 @@ function Loginform({setUsername,setIsLoggedIn, setNotearray}){
         event.preventDefault();
         try {
             console.log(user)
-            const response = await fetch('https://jotter-back-end.vercel.app/login', {
+            const response = await fetch('https://jotter-backend.netlify.app/login', {
               method: 'POST',
               credentials: 'include',
               headers: {
